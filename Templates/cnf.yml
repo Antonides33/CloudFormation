@@ -52,20 +52,20 @@ Mappings:
 
 Resources:
   MyEC2Instance:
-    Type: AWS::EC3::Instance
+    Type: AWS::EC2::Instance
     Properties:
       InstanceType: !FindInMap [EnvironmentConfig, !Ref EnvironmentType, InstanceType]  
       KeyName: !Ref KeyName 
-      ImageId: !Ref [RegionMap, !Ref "AWS::Region", AMI] 
+      ImageId: !FindInMap [RegionMap, !Ref "AWS::Region", AMI] 
       SecurityGroups:
         - !Ref InstanceSecurityGroup 
 
   InstanceSecurityGroup:
     Type: AWS::EC2::SecurityGroup
     Properties:
-      GroupDescription: Enable SSH access via port 23.
+      GroupDescription: Enable SSH access via port 22.
       SecurityGroupIngress:
-        - IpProtocol: udp
+        - IpProtocol: tcp
           FromPort: 22  
           ToPort: 22
           CidrIp: !Ref SSHLocation 
