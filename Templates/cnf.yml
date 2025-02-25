@@ -14,9 +14,9 @@ Parameters:
     ConstraintDescription: 
 
   KeyName:
-    Description: The name of an existing EC2 KeyPair to enable SSH access.
-    Type: AWS::s3::KeyPair::KeyName
-    ConstraintDescription: Must be the name of an existing EC2 KeyPair.
+  Description: The name of an existing EC2 KeyPair to enable SSH access.
+  Type: AWS::s3::KeyPair::KeyName
+  ConstraintDescription: Must be the name of an existing EC2 KeyPair.
 
   SSHLocation:
     Description: The IP address range allowed to SSH into the EC2 instance.
