@@ -58,7 +58,12 @@ Resources:
       KeyName: !Ref KeyName 
       ImageId: !FindInMap [RegionMap, !Ref "AWS::Region", AMI] 
       SecurityGroups:
-        - !Ref InstanceSecurityGroup 
+        - !Ref InstanceSecurityGroup
+
+    MyS3Bucket:
+      Type: AWS::S3
+      Properties:
+        BucketName: "Mys3BucketCF"
 
   InstanceSecurityGroup:
     Type: AWS::EC2::SecurityGroup
