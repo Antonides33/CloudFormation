@@ -63,7 +63,21 @@ Conditions:
   IsLargeInstance: !Equals [!Ref InstanceType, "t2.medium"]
 
   # Condition: Is the environment "prod" AND the instance type "t2.medium"?
-  IsProdAndLargeInstance: !And [!Condition IsProd, !Condition IsLargeInstance]
+  IsProdAndLargeInstance: !If
+    !And 
+    !Condition IsProd
+    !Condition IsLargeInstance
+     -t3.medium
+     -t2.small]
+
+  IsProdAndLargeInstanceShort:
+    !If 
+      - !Equals
+        - !Ref EnvironmentType
+        - Production
+      - !Equals
+        - !Ref InstanceType
+        - t2.medium
 
 # Resources Section
 # Resources define the AWS resources to be created.
