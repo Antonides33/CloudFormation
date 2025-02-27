@@ -10,8 +10,8 @@ Parameters:
     Type: String
     Default: t2.micro
     AllowedValues:  
-      -t2.micro
-      -t2.medium
+      - t2.micro
+      - t2.medium
     ConstraintDescription: Must be a valid Ec2 instance type 
 
   KeyName:
