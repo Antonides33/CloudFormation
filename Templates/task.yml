@@ -11,22 +11,26 @@ Description: A template to create an S3 bucket and an EC2 instance based on the 
 Parameters:
   EnvironmentType:
     Description: Deployment environment
-    Type: 
+    Type: "String"
     AllowedValues:
-      - 
-      - 
-    Default: 
+      - "prod",
+      - "test",
+    Default: "dev"
 
 Resources:
   # S3 Bucket resource to be conditionally created
   MyS3Bucket:
-    Type: 
+    Type: "AWS::S3::Bucket"
     Properties:
-      BucketName: my-environment-specific-bucket
+      BucketName:  !Sub "my-${EnvironmentType}-${AWS::Region}"
 
   # EC2 Instance with conditional instance type
   MyEC2Instance:
-    Type: 
+    Type: "AWS::EC2::Instance",
     Properties:
-      InstanceType: # To be set conditionally
+      InstanceType:  # To be set conditionally
+      Fn::If:
+      - Isprod
+      - "t2.medium"
+      - "t2.micro" 
       ImageId: 
