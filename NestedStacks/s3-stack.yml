@@ -4,6 +4,7 @@ Description: "Child stack to create an S3 bucket."
 Resources:
   MyS3Bucket:
     Type: AWS::S3::Bucket
+    DeletionPolicy: Delete
     Properties:
       BucketName: !Sub "my-bucket-${AWS::StackName}-${AWS::Region}"
       AccessControl: Private
