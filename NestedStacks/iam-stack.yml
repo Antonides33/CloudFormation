@@ -22,7 +22,9 @@ Resources:
                 Action:
                   - s3:GetObject
                   - s3:ListBucket
-                Resource: "*"
+                Resource:
+                  - "arn:aws:s3:::cfbucket2025"
+                  - "arn:aws:s3:::cfbucket2025/*"
 
 Outputs:
   IAMRoleName:
