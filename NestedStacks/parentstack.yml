@@ -1,6 +1,8 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Description: "Parent stack to deploy three child stacks: S3, IAM, and EC2."
 
+#testing actions
+
 Resources:
   # Child Stack 1: S3 Bucket
   S3Stack:
